@@ -1,18 +1,27 @@
-version: 0.2
+version: 0.1
 
 phases:
- 	install:
-		runtime-versions:
-			nodejs: latest
-		commands:
-			- npm install -g @angular/cli@9.0.6
-	pre_build:
-		commands:
-			- npm install
-	build:
-		commands:
-			- ng build --prod
+  install:
+    commands:
+      - echo installing nodejs...
+      - curl -sL https://deb.nodesource.com/setup_12.x | bash -
+      - apt-get install -y nodejs
+      - echo installing yarn...
+      - curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
+      - echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
+      - apt install --no-install-recommends yarn
+  pre_build:
+    commands:
+      - echo installing dependencies...
+      - npm i -g @angular/cli
+      - npm install
+  build:
+    commands:
+      # - echo testing...
+      # - echo building...
+      - ng build --prod
 artifacts:
-	base-directory: dist/angpro
-	files:
-		- '**/*'
+  files:
+    - "**/*"
+  discard-paths: no
+  base-directory: dist/your-app-name
