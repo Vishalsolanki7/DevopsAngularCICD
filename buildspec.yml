@@ -24,4 +24,4 @@ artifacts:
   files:
     - "**/*"
   discard-paths: no
-  base-directory: dist/angpro
+  base-directory: dist/my-angular-project
