@@ -17,4 +17,4 @@ phases:
       - npm install
   build:
     commands:
-	- ng test --no-watch --no-progress --browsers=ChromeHeadLessCI
+	- ng test --no-watch --no-progress --browsers=ChromeHeadlessCI
